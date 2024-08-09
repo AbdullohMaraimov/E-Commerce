@@ -1,5 +1,6 @@
 package com.technomist.e_commerce.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,8 +19,12 @@ public class Inventory {
     @Column(nullable = false)
     private Long id;
 
+    @JsonIgnore
     @OneToOne(optional = false, orphanRemoval = true)
     private Product product;
+
+    @Column(nullable = false)
+    private Integer quantity;
 
 
 }
