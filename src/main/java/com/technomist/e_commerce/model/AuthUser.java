@@ -1,5 +1,6 @@
 package com.technomist.e_commerce.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,6 +24,7 @@ public class AuthUser {
     @Column(nullable = false, unique = true)
     private String username;
 
+    @JsonIgnore
     @Column(nullable = false, length = 100)
     private String password;
 
@@ -35,6 +37,7 @@ public class AuthUser {
     @Column(nullable = false, unique = true, length = 200)
     private String email;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Address> addresses = new ArrayList<>();
 
